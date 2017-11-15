@@ -3,56 +3,62 @@ package com.manipulation;
 import java.io.*;
 import java.util.*;
 
+
 public class Manipulation {
+
+
     public static void main(String[] args) {
-        int i;
-        int a;
         String s;
-        ArrayList<String> arr = new ArrayList<String>();
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
-        Comp comp = new Comp(map);
-        TreeMap<String, Integer> tmap = new TreeMap<String, Integer>(comp);
+        List<String> arr = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
         File file = new File("C:\\Users\\Misha\\Desktop\\Test.txt");
         try (
                 FileInputStream f = new FileInputStream(file);
-                BufferedReader br = new BufferedReader(new InputStreamReader(f));) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(f))) {
 
             while ((s = br.readLine()) != null) {
                 arr.add(s);
             }
         } catch (IOException e) {
-            System.out.println(e);
+            throw new RuntimeException("Ошибка ввода/тения данных " + file.getName(), e);
         }
 
-        for (i = 0; i < arr.size(); i++) {
-            s = arr.get(i);
-            Integer povtor = map.get(s);
-            map.put(s, povtor == null ? 1 : povtor + 1);
+        for (String line : arr) {
+
+            if (!map.containsKey(line)) {
+                map.put(line, 1);
+            } else {
+                map.put(line, map.get(line) + 1);
+            }
         }
-        tmap.putAll(map);
-        for (Map.Entry e : tmap.entrySet()) {
-            System.out.println(e.getKey() + " " + e.getValue());
+        Map<String, Integer> sortbyvalues = sortbyvalues(map);
+        Set<Map.Entry<String, Integer>> set = sortbyvalues.entrySet();
+        for (Map.Entry<String,Integer> a : set) {
+            System.out.println(a.getKey() + " " + a.getValue());
         }
     }
+
+    public static <K, V extends Comparable<V>> Map<K, V> sortbyvalues(Map<K, V> m) {
+
+        Comparator<K> comparator = new Comparator<K>() {
+            @Override
+            public int compare(K o1, K o2) {
+                if (m.get(o1).compareTo(m.get(o2)) >= 0) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+        };
+        Map<K, V> tmap = new TreeMap<K, V>(comparator);
+        tmap.putAll(m);
+        return tmap;
+    }
+
+
 }
 
-class Comp implements Comparator<String> {
 
-    Map<String, Integer> base;
-
-    public Comp(HashMap<String, Integer> map) {
-        this.base = map;
-    }
-
-    public int compare(String a, String b) {
-        if (base.get(a) >= base.get(b)) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
-
-}
 
 
 
