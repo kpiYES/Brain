@@ -33,7 +33,7 @@ public class Manipulation {
         }
         Map<String, Integer> sortbyvalues = sortbyvalues(map);
         Set<Map.Entry<String, Integer>> set = sortbyvalues.entrySet();
-        for (Map.Entry<String,Integer> a : set) {
+        for (Map.Entry<String, Integer> a : set) {
             System.out.println(a.getKey() + " " + a.getValue());
         }
     }
