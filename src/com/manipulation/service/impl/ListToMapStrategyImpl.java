@@ -11,10 +11,8 @@ public class ListToMapStrategyImpl implements ListToMapStrategy<String, Integer>
     public Map<String, Integer> transform(List<String> entity) {
 
         Map<String, Integer> map = new HashMap<>();
-        List<String> arr;
 
-        arr = entity;
-        for (String line : arr) {
+        for (String line : entity) {
 
             if (!map.containsKey(line)) {
                 map.put(line, 1);

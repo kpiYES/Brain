@@ -5,33 +5,22 @@ import java.util.*;
 
 
 public class ReadServiceImpl implements com.manipulation.service.ReadService {
-    String path;
-    File file;
+
+    List<String> arr = new ArrayList<>();
 
     public List<String> readLinesToList(String path) {
-        this.path = path;
-        String s;
-        List<String> arr = new ArrayList<>();
-
-        this.file = new File(path);
-
-        try (
-                FileInputStream f = new FileInputStream(file);
-                BufferedReader br = new BufferedReader(new InputStreamReader(f))) {
-
-            while ((s = br.readLine()) != null) {
-                arr.add(s);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка ввода/тения данных " + file.getName(), e);
-        }
+        File file = new File(path);
+        writeToList(file);
         return (arr);
     }
 
     public List<String> readLinesToList(File file) {
-        this.file = file;
+        writeToList(file);
+        return (arr);
+    }
+
+    private List<String> writeToList(File file) {
         String s;
-        List<String> arr = new ArrayList<>();
         try (
                 FileInputStream f = new FileInputStream(file);
                 BufferedReader br = new BufferedReader(new InputStreamReader(f))) {
@@ -43,6 +32,7 @@ public class ReadServiceImpl implements com.manipulation.service.ReadService {
             throw new RuntimeException("Ошибка ввода/тения данных " + file.getName(), e);
         }
         return (arr);
+
     }
 }
 
