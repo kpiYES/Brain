@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class PrintMapStrategyImpl<K, V> implements PrintMapStrategy<K, V> {
-
+    @Override
     public void print(Map<K, V> tmap) {
         Set<Map.Entry<K, V>> set = tmap.entrySet();
         for (Map.Entry<K, V> a : set) {

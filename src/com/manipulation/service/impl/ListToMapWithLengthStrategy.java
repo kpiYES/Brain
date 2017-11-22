@@ -1,29 +1,21 @@
 package com.manipulation.service.impl;
 
-import com.manipulation.service.*;
+import com.manipulation.service.ListToMapStrategy;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ListToMapStrategyImpl implements ListToMapStrategy<String, Integer> {
+public class ListToMapWithLengthStrategy implements ListToMapStrategy<String, Integer> {
 
     @Override
     public Map<String, Integer> transform(List<String> entity) {
-
         Map<String, Integer> map = new HashMap<>();
-
         for (String line : entity) {
 
-            if (!map.containsKey(line)) {
-                map.put(line, 1);
-            } else {
-                map.put(line, map.get(line) + 1);
-            }
+            map.put(line,line.length());
 
-        }
+            }
         return map;
     }
-
-
 }
