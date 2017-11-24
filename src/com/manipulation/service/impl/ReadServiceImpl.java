@@ -8,6 +8,7 @@ public class ReadServiceImpl extends AbstractReadService implements com.manipula
 
 
     protected List<String> writeToList(File file) {
+        List<String> arr = new ArrayList<>();
         String s;
         try (
                 FileInputStream f = new FileInputStream(file);
@@ -20,7 +21,6 @@ public class ReadServiceImpl extends AbstractReadService implements com.manipula
             throw new RuntimeException("Ошибка ввода/тения данных " + file.getName(), e);
         }
         return (arr);
-
     }
 }
 

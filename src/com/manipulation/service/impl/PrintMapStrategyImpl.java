@@ -2,8 +2,8 @@ package com.manipulation.service.impl;
 
 import com.manipulation.service.PrintMapStrategy;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 
 public class PrintMapStrategyImpl<K, V> implements PrintMapStrategy<K, V> {
     @Override
@@ -12,6 +12,5 @@ public class PrintMapStrategyImpl<K, V> implements PrintMapStrategy<K, V> {
         for (Map.Entry<K, V> a : set) {
             System.out.println(a.getKey() + " " + a.getValue());
         }
-
     }
 }

@@ -1,10 +1,9 @@
 package com.manipulation.service.impl;
 
 import com.manipulation.service.ListToMapStrategy;
+import com.manipulation.util.MapUtil;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ListToMapWithLengthStrategy implements ListToMapStrategy<String, Integer> {
 
@@ -12,10 +11,8 @@ public class ListToMapWithLengthStrategy implements ListToMapStrategy<String, In
     public Map<String, Integer> transform(List<String> entity) {
         Map<String, Integer> map = new HashMap<>();
         for (String line : entity) {
-
-            map.put(line,line.length());
-
-            }
-        return map;
+            map.put(line, line.length());
+        }
+        return MapUtil.sortbyvalues(map);
     }
 }

@@ -1,10 +1,9 @@
 package com.manipulation.service.impl;
 
 import com.manipulation.service.*;
+import com.manipulation.util.MapUtil;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ListToMapStrategyImpl implements ListToMapStrategy<String, Integer> {
 
@@ -20,10 +19,7 @@ public class ListToMapStrategyImpl implements ListToMapStrategy<String, Integer>
             } else {
                 map.put(line, map.get(line) + 1);
             }
-
         }
-        return map;
+        return MapUtil.sortbyvalues(map);
     }
-
-
 }

@@ -3,8 +3,7 @@ package com.manipulation.service.impl;
 import com.manipulation.service.PrintMapStrategy;
 
 import java.io.*;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class PrintMapToFileStrategy<K, V> implements PrintMapStrategy<K, V> {
     @Override

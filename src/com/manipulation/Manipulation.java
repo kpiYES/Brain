@@ -3,9 +3,7 @@ package com.manipulation;
 import java.io.*;
 import java.util.*;
 
-
 public class Manipulation {
-
 
     public static void main(String[] args) {
         String s;
@@ -54,8 +52,6 @@ public class Manipulation {
         tmap.putAll(m);
         return tmap;
     }
-
-
 }
 
 

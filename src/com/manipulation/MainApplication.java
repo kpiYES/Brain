@@ -4,7 +4,6 @@ import com.manipulation.app.Application;
 import com.manipulation.service.*;
 import com.manipulation.service.impl.*;
 
-
 import java.io.File;
 
 public class MainApplication {

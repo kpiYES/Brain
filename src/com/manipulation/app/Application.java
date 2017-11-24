@@ -1,11 +1,10 @@
 package com.manipulation.app;
 
 import com.manipulation.service.*;
-import com.manipulation.util.MapUtil;
+
 
 import java.io.File;
 import java.util.*;
-
 
 public class Application {
     private ReadService readService;
@@ -23,8 +22,7 @@ public class Application {
 
     public void execute(File file) {
         List<String> arr = readService.readLinesToList(file);
-        Map<String, Integer> map = transformService.transform(arr);
-        Map<String, Integer> tmap = MapUtil.sortbyvalues(map);
+        Map<String, Integer> tmap = transformService.transform(arr);
         printService.print(tmap);
     }
 }
